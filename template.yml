@@ -6,7 +6,7 @@ Parameters:
   MinticKeyName:
     Description: Nombre del par de claves SSH
     Type: AWS::EC2::KeyPair::KeyName
-    Default: ssh-iac-mintic-ec2  # Asegurate que este sea el nombre REAL en tu AWS
+    Default: Mintic-Key  # Asegurate que este sea el nombre REAL en tu AWS
 
   MinticAmiId:
     Description: AMI para las instancias EC2 (Amazon Linux 2)
@@ -109,7 +109,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: !Ref MinticAmiId
-      InstanceType: t2.micro     # CAMBIADO A T2 PARA EVITAR ERRORES
+      InstanceType: t3.micro     # CAMBIADO A T2 PARA EVITAR ERRORES
       KeyName: !Ref MinticKeyName
       NetworkInterfaces:
         - AssociatePublicIpAddress: true
@@ -131,7 +131,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: !Ref MinticAmiId
-      InstanceType: t2.micro     # CAMBIADO A T2
+      InstanceType: t3.micro     # CAMBIADO A T2
       KeyName: !Ref MinticKeyName
       NetworkInterfaces:
         - AssociatePublicIpAddress: true
@@ -190,7 +190,7 @@ Resources:
     Properties:
       LaunchTemplateData:
         ImageId: !Ref MinticAmiId
-        InstanceType: t2.micro    # CAMBIADO A T2
+        InstanceType: t3.micro    # CAMBIADO A T2
         KeyName: !Ref MinticKeyName
         SecurityGroupIds:
           - !Ref MinticSecurityGroup
